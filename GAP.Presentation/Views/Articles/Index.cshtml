@@ -1,0 +1,73 @@
+﻿@model GAP.Presentation.Models.ArticlesModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-primary" style="margin-top:100px;">
+    <div class="panel-heading">
+        <h3 class="panel-title">Articles</h3>
+    </div>
+    <div class="panel-body" >
+        <table id="example" class="table table-striped table-bordered" 
+               data-toggle="table"
+               data-search="true"
+               data-filter-control="true"
+               >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>TotalInShelf</th>
+                    <th>TotalInVault</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.ListArticles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                       @String.Format("{0:C}",Convert.ToDecimal(item.Price.ToString()))
+                    </td>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.TotalInShelf)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.TotalInVault)
+                    </th>
+                    <td style="text-align:center;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+             }
+            </tbody>
+        </table>
+        @Html.ActionLink("Add Article", "AddArticle", new { }, new { @class = "btn btn-info" })
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+
+
+    
+
+
+
