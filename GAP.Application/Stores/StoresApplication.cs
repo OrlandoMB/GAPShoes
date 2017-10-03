@@ -13,12 +13,23 @@ namespace GAP.Application.Stores
 {
     public class StoresApplication
     {
+        private static String BASE_URL = "";
+
+
+        public StoresApplication() { }
+
+        public StoresApplication(String baseUrl)
+        {
+            BASE_URL = baseUrl;
+        }
+
+
         public List<Model.Stores> GetAllStores()
         {
     
             using (var _client = new HttpClient())
             {
-                _client.BaseAddress = new Uri("http://localhost:62046/");
+                _client.BaseAddress = new Uri(BASE_URL);
 
                 var byteArray = Encoding.ASCII.GetBytes("my_user:my_password");
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
