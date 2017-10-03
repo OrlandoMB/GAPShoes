@@ -21,7 +21,6 @@ namespace GAP.Presentation.Controllers
         {
             try
             {
-
                 Models.ArticlesModel model = new Models.ArticlesModel();
                 model.ListArticles = app.GetAllArticles();
 
