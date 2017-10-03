@@ -54,7 +54,7 @@ namespace GAP.Presentation.Controllers
         {
             try
             {
-                StoresApplication storesApp = new StoresApplication();
+                StoresApplication storesApp = new StoresApplication(BASE_URL);
 
                 var stores = storesApp.GetAllStores()
                             .Select(st =>
