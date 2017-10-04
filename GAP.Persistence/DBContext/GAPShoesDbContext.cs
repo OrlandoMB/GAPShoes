@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GAP.WebApi.Persistence.Entities;
-using GAP.WebApi.Persistence.Migrations;
 
 namespace GAP.WebApi.Persistence.DBContext
 {
@@ -13,7 +12,6 @@ namespace GAP.WebApi.Persistence.DBContext
     {
         public GAPShoesDbContext() : base("GAPShoes")
         {
-            Database.SetInitializer<GAPShoesDbContext>(new CreateDatabaseIfNotExists<GAPShoesDbContext>());
             Database.SetInitializer<GAPShoesDbContext>(new GAPShoesDbInitializer());
         }
 
